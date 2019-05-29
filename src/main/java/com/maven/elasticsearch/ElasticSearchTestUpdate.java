@@ -75,15 +75,15 @@ public class ElasticSearchTestUpdate {
     @Test
     public void testUpsert() throws Exception {
         // 设置查询条件, 查找不到则添加
-        IndexRequest indexRequest = new IndexRequest("blog02", "article", "1")
+        IndexRequest indexRequest = new IndexRequest("blog02", "article", "4")
                 .source(XContentFactory.jsonBuilder()
                         .startObject()
                         .field("title", "搜索服务器")
                         .field("content",
-                                "它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。")
+                                "它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。")
                         .endObject());
         // 设置更新, 查找到更新下面的设置
-        UpdateRequest upsert = new UpdateRequest("blog02", "article", "1")
+        UpdateRequest upsert = new UpdateRequest("blog02", "article", "4")
                 .doc(XContentFactory.jsonBuilder()
                         .startObject()
                         .field("user", "李四")

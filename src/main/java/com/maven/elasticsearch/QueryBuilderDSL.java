@@ -39,8 +39,8 @@ public class QueryBuilderDSL {
          * 1、ElasticSearch提供QueryBuileders.queryStringQuery(搜索内容)
          *     查询方法，对所有字段进行分词查询
          */
-		SearchResponse searchResponse = client.prepareSearch("blog02").setTypes("article")
-				.setQuery(QueryBuilders.queryStringQuery("全面")) .get();
+	/*	SearchResponse searchResponse = client.prepareSearch("blog02").setTypes("article")
+				.setQuery(QueryBuilders.queryStringQuery("全面")) .get();*/
         /**
          * 2、 只想查询content里包含全文 ，使用QueryBuilders.wildcardQuery模糊查询 *任意字符串 ?任意单个字符
          */
@@ -49,9 +49,9 @@ public class QueryBuilderDSL {
         /**
          * 3、 查询content词条为“搜索” 内容，使用TermQuery
          */
-       /* SearchResponse searchResponse = client.prepareSearch("blog02")
-                .setTypes("article")
-                .setQuery(QueryBuilders.termQuery("content", "全文")).get();*/
+        SearchResponse searchResponse = client.prepareSearch("notice")
+                .setTypes("common")
+                .setQuery(QueryBuilders.termQuery("content", "效益")).get();
         SearchHits hits = searchResponse.getHits(); // 获取命中次数，查询结果有多少对象
         System.out.println("查询结果有：" + hits.getTotalHits() + "条");
         Iterator<SearchHit> iterator = hits.iterator();
